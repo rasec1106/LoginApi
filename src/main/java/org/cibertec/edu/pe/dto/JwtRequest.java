@@ -1,4 +1,4 @@
-package org.cibertec.edu.pe.entity;
+package org.cibertec.edu.pe.dto;
 
 import lombok.Getter;
 import lombok.Setter;

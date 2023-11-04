@@ -1,8 +1,8 @@
 package org.cibertec.edu.pe.service;
 
 import org.cibertec.edu.pe.dao.UserRepository;
-import org.cibertec.edu.pe.entity.JwtRequest;
-import org.cibertec.edu.pe.entity.JwtResponse;
+import org.cibertec.edu.pe.dto.JwtRequest;
+import org.cibertec.edu.pe.dto.JwtResponse;
 import org.cibertec.edu.pe.entity.User;
 import org.cibertec.edu.pe.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

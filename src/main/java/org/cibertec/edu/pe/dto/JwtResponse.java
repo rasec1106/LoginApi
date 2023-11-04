@@ -1,4 +1,6 @@
-package org.cibertec.edu.pe.entity;
+package org.cibertec.edu.pe.dto;
+
+import org.cibertec.edu.pe.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
