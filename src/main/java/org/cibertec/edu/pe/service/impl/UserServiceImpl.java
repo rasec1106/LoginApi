@@ -100,4 +100,14 @@ public class UserServiceImpl implements UserService{
         }
         return false;
 	}
+
+	@Override
+	public User addRoleToUser(String userName, String roleName) {
+		User user = getUserByUsername(userName);
+		Role role = roleRepository.findById(roleName).orElse(null);
+		Set<Role> roles = user.getRoles();
+		roles.add(role);
+		user.setRoles(roles);
+		return userRepository.save(user);
+	}
 }

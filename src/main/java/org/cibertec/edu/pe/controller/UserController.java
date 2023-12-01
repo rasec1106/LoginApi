@@ -1,5 +1,6 @@
 package org.cibertec.edu.pe.controller;
 
+import org.cibertec.edu.pe.dto.AddRoleRequest;
 import org.cibertec.edu.pe.entity.User;
 import org.cibertec.edu.pe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,10 @@ public class UserController {
     @DeleteMapping({"/deleteUser/{userName}"})
     public boolean deleteRole(@PathVariable String userName) {
     	return userService.deleteUser(userName);
+    }
+    
+    @PostMapping({"/addRoleToUser"})
+    public User addRoleToUser(@RequestBody AddRoleRequest request){
+        return userService.addRoleToUser(request.getUserName(), request.getRoleName());
     }
 }
