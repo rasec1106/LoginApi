@@ -215,7 +215,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"roleName\": \"Professor\",\r\n    \"roleDescription\": \"Professor role\"\r\n}",
+							"raw": "{\r\n    \"roleName\": \"Professor\",\r\n    \"roleDescription\": \"Professor Role\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -453,6 +453,42 @@
 							"path": [
 								"deleteUser",
 								"rasec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddRoleToUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"rasec\",\r\n    \"roleName\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/addRoleToUser",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"addRoleToUser"
 							]
 						}
 					},
