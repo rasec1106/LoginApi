@@ -10,6 +10,20 @@
 			"name": "Authentication",
 			"item": [
 				{
+					"name": "TestIsWorking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Authenticate",
 					"event": [
 						{
@@ -30,7 +44,7 @@
 									"let token = response[\"jwtToken\"],\r",
 									"    savedData = JSON.stringify(response);\r",
 									"\r",
-									"pm.environment.set(\"token\", token);"
+									"pm.collectionVariables.set(\"token\", token);"
 								],
 								"type": "text/javascript"
 							}
@@ -49,12 +63,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/authenticate",
-							"protocol": "http",
+							"raw": "{{base_url}}/authenticate",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"authenticate"
 							]
@@ -473,7 +485,8 @@
 		{
 			"key": "base_url",
 			"value": "http://localhost:8080",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "token",
@@ -481,8 +494,9 @@
 			"type": "string"
 		},
 		{
-			"key": "variable_key",
-			"value": ""
+			"key": "base_url",
+			"value": "https://api-login.azurewebsites.net",
+			"type": "string"
 		}
 	]
 }
