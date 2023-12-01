@@ -1,6 +1,7 @@
 package org.cibertec.edu.pe.service.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.cibertec.edu.pe.dao.RoleRepository;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService{
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public User registerNewUser(User user){
+    public User createUser(User user){
         Role role = roleRepository.findByRoleName("User").get();
 
         Set<Role> roles = new HashSet<>();
@@ -68,5 +69,33 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User getUserByUsername(String userName) {
 		return userRepository.findByUserName(userName).orElse(null);
+	}
+
+	@Override
+	public List<User> getUsers() {
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User updateUser(User user) {
+		if (userRepository.existsById(user.getUserName())) {
+			User dbUser = getUserByUsername(user.getUserName());
+			if(user.getRoles() == null) user.setRoles(dbUser.getRoles());
+			if(user.getUserFirstName() == null) user.setUserFirstName(dbUser.getUserFirstName());
+			if(user.getUserLastName() == null) user.setUserLastName(dbUser.getUserLastName());
+			if(user.getUserPassword() == null) user.setUserPassword(dbUser.getUserPassword());
+			else user.setUserPassword(getEncodedPassword(user.getUserPassword()));
+			return userRepository.save(user);
+        }
+        return null;		
+	}
+
+	@Override
+	public boolean deleteUser(String userName) {
+		if (userRepository.existsById(userName)) {
+			userRepository.deleteById(userName);
+            return true;
+        }
+        return false;
 	}
 }

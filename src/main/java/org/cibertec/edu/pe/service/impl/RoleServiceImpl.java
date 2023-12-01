@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService{
 	private UserService userService;
 
 	@Override
-    public Role createNewRole(Role role){
+    public Role createRole(Role role){
         return roleRepository.save(role);
     }
     

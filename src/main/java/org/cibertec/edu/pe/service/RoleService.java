@@ -6,9 +6,9 @@ import org.cibertec.edu.pe.entity.Role;
 
 public interface RoleService {
 	public List<Role> getRoles();
-	public Role createNewRole(Role role);
-	public Role updateRole(Role role);
-	public boolean deleteRole(String roleName);
 	public Role getRoleByRoleName(String roleName);
 	public List<Role> getRolesByUserName(String userName);
+	public Role createRole(Role role);
+	public Role updateRole(Role role);
+	public boolean deleteRole(String roleName);
 }
