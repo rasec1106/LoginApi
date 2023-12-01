@@ -93,6 +93,8 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean deleteUser(String userName) {
 		if (userRepository.existsById(userName)) {
+			User user = getUserByUsername(userName);
+			user.setRoles(null);
 			userRepository.deleteById(userName);
             return true;
         }
