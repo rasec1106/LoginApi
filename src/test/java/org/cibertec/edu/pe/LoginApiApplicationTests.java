@@ -47,29 +47,29 @@ class LoginApiApplicationTests {
 	
 	@Test
 	public void findUserTest() {
-		Optional<User> dbUser = userRepository.findById("test");
+		Optional<User> dbUser = userRepository.findByUserName("test");
 		assertNotNull(dbUser);
 	}
 	
 	@Test
 	public void updateUserTest() {
-		User dbUser = userRepository.findById("test").get();		
+		User dbUser = userRepository.findByUserName("test").get();		
 		dbUser.setUserPassword(userService.getEncodedPassword("newPassword"));
 		User newUser = userRepository.save(dbUser);
 		assertTrue(newUser.getUserPassword().equalsIgnoreCase(dbUser.getUserPassword()));
 	}
 	
 	@Test
-	public void deleteUserTest(@Autowired UserRepository userRepository) {
+	public void deleteUserTest() {
 		userRepository.deleteById("test");
-		Optional<User> dbUser = userRepository.findById("test");
+		Optional<User> dbUser = userRepository.findByUserName("test");
 		assertEquals(dbUser, Optional.empty());
 	}
 		
 	@AfterAll
 	public static void clean(@Autowired UserRepository userRepository) {
-		Optional<User> dbUser = userRepository.findById("test");			
-		if(dbUser.isPresent()) userRepository.deleteById("test");
+		User dbUser = userRepository.findByUserName("test").orElse(null);			
+		if(dbUser != null) userRepository.deleteById(dbUser.getUserName());
 	}
 
 }
