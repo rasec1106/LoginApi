@@ -39,7 +39,6 @@ public class UserController {
         return "This URL is only accesible to the user";
     }
     
-    
     @GetMapping({"/getUsers"})
     public List<User> getUsers() {
     	return userService.getUsers();

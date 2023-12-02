@@ -39,11 +39,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"variable_key\", \"variable_value\");\r",
 									"let response = pm.response.json();\r",
-									"let token = response[\"jwtToken\"],\r",
-									"    savedData = JSON.stringify(response);\r",
-									"\r",
+									"let token = response[\"jwtToken\"];\r",
 									"pm.collectionVariables.set(\"token\", token);"
 								],
 								"type": "text/javascript"
@@ -186,13 +183,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/getRolesByUserName/admin",
+							"raw": "{{base_url}}/getRolesByUserName/rasec",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"getRolesByUserName",
-								"admin"
+								"rasec"
 							]
 						}
 					},
@@ -346,13 +343,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/getUserByUsername/admin",
+							"raw": "{{base_url}}/getUserByUsername/rasec",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"getUserByUsername",
-								"admin"
+								"rasec"
 							]
 						}
 					},
@@ -411,7 +408,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userName\": \"rasec\",\r\n    \"userFirstName\": \"Cesar Humberto\",\r\n    \"userLastName\": \"Herrera Villacorta\",\r\n    \"userPassword\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"userName\": \"rasec\",\r\n    \"userFirstName\": \"Luis\",\r\n    \"userLastName\": \"Jara\",\r\n    \"userPassword\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -475,7 +472,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userName\": \"rasec\",\r\n    \"roleName\": \"Admin\"\r\n}",
+							"raw": "{\r\n    \"userName\": \"rasec\",\r\n    \"roleName\": \"Professor\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
